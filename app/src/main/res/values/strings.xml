@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SQLite操作</string>
+    <string name="create_table">新建数据表</string>
+    <string name="select_table">查询数据库</string>
+    <string name="insert_item">添加两条数据</string>
+    <string name="delete_item">删除一条数据</string>
+    <string name="delete_table">删除数据表</string>
+
+</resources>
