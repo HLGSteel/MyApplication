@@ -29,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
         mOpenHelper = new DatabaseHelper(this);
 
         mCreateTable = (Button)findViewById(R.id.bCreateTable);
+        mCreateTable.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                createTable();
+            }
+        });
 
         mSelectTable = (Button)findViewById(R.id.bSelectTable);
         mSelectTable.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +68,19 @@ public class MainActivity extends AppCompatActivity {
                 dropTable();
             }
         });
+    }
+
+    private void createTable(){
+        SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+        String sql = "create table "+TABLE_NAME+"("+TITLE+" text not null, "+BODY+" text not null"+");";
+        Log.i("chapter3:createDB=", sql);
+        try{
+            db.execSQL("drop table if exists "+TABLE_NAME);
+            db.execSQL(sql);
+            setTitle("创建数据表成功");
+        }catch (SQLException e){
+            setTitle("创建数据表失败");
+        }
     }
 
     private void showItems(){
